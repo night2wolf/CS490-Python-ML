@@ -1,5 +1,4 @@
 from typing import List, Dict
-"""
 # Problem 1 = convert list of student weight in pounds to kilograms
 sPounds =[]
 sKilograms = []
@@ -25,7 +24,7 @@ def string_alternative(String):
   print(strBldr)
 
 string_alternative(inputStr)
-"""
+
 # Problem 3
 
 def find_word_count(file_name: str) -> Dict[str, int]:
