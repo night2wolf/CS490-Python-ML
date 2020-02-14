@@ -16,6 +16,7 @@ TitanicY_train = train_df["Survived"]
 TitanicX_test = test_df.drop("PassengerId",axis=1).copy()
 print(train_df[train_df.isnull().any(axis=1)])
 print(train_df[['Sex', 'Survived']].groupby(['Sex'], as_index=False).mean().sort_values(by='Survived', ascending=False) )
+print(train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False) )
 ##KNN
 knn = KNeighborsClassifier(n_neighbors = 3)
 knn.fit(TitanicX_train, TitanicY_train)
@@ -56,7 +57,6 @@ Evaluate the model on testing part using score and
 classification_report(y_true, y_pred)
 Which algorithm you got better accuracy? Can you justify why?
 """
-
 
 from sklearn import svm
 Glass_data = pd.read_csv("./glass.csv")
