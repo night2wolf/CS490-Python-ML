@@ -1,31 +1,29 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+from scipy import stats
+plt.style.use(style='ggplot')
+plt.rcParams['figure.figsize'] = (10, 6)
 train = pd.read_csv('train.csv')
 ##handling missing value
 data = train.select_dtypes(include=[np.number]).interpolate().dropna()
-##Build a linear model
-y = np.log(train.SalePrice)
-X = data.drop(['GarageArea', 'Id'], axis=1)
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(
-                                    X, y, random_state=42, test_size=.33)
-from sklearn import linear_model
-lr = linear_model.LinearRegression()
-model = lr.fit(X_train, y_train)
-##Evaluate the performance and visualize results
-print ("R^2 is: \n", model.score(X_test, y_test))
-predictions = model.predict(X_test)
-from sklearn.metrics import mean_squared_error
-print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+garage = train.get('GarageArea')
+z = np.abs(stats.zscore(garage))
+print(z)
+outliers=[]
+drop =  []
+for i, score in enumerate(z):
+  if score > 3:
+    outliers.append((i,score))
+    drop.append(i)
+print(outliers)
+train.drop(train.index[drop],inplace=True)
 
 ##visualize
 
-actual_values = y_test
-plt.scatter(predictions, actual_values, alpha=.75,
+plt.scatter(train.get('GarageArea'), train.get('SalePrice'), alpha=.75,
             color='b') #alpha helps to show overlapping data
-plt.xlabel('Predicted Price')
-plt.ylabel('Actual Price')
-plt.title('Linear Regression Model')
+plt.xlabel('Garage Area')
+plt.ylabel('Sale Price')
+plt.title('Relation')
 plt.show()
