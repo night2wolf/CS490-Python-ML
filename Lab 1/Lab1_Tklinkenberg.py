@@ -21,13 +21,13 @@ titles = []
 p_Objs = bsObj.find_all("p")
 for p_Obj in p_Objs:
    if p_Obj.attrs == {'class': ['courseblockdesc']}:
-     descriptions.append(p_Obj)
+     descriptions.append(p_Obj.get_text())
 class_names = bsObj.find_all("span")
 for class_name in class_names:
   if class_name.attrs == {'class': ['code']}:
-    names.append(class_name)
+    names.append(class_name.get_text())
   if class_name.attrs == {'class': ['title']}:
-    titles.append(class_name)
+    titles.append(class_name.get_text())
 for i in range(len(names)):
   print(str(names[i]) + " " + str(titles[i]) + '\n' + str(descriptions[i]))
 
@@ -35,26 +35,43 @@ for i in range(len(names)):
 # a. Report which K is the best using the elbow method.
 # b. Evaluate with silhouette score or other scores relevant for unsupervised approaches
 # (before applying clustering clean the data set with the EDA learned in the class)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn import metrics
-from scipy.spatial.distance import cdist
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-data = pd.read_csv('linnerud_physiological.csv')
-data.drop
-distortions = []
-for k in range(1, 10):
-    kmeans_model = KMeans(n_clusters=k).fit(data)
-    kmeans_model.fit(data)
-    distortions.append(sum(np.min(cdist(data,kmeans_model.cluster_centers_,'euclidean'),axis=1)))
-plt.plot(k,distortions)
-plt.xlabel("k")
-plt.ylabel("Distortions")
-plt.title("Elbow Method with linnerud_physiological for optimal k")
+dataset = pd.read_csv('boston_house_prices.csv')
+dataset = dataset.fillna(dataset.mean())
+x = dataset.iloc[:,[0,1,2,3,4,5,6,7,8,9,10,11,12,13]]
+y = dataset.iloc[:,-1]
+
+##elbow method to know the number of clusters
+wcss = []
+for i in range(1,11):
+    kmeans = KMeans(n_clusters=i,init='k-means++',max_iter=300,n_init=10,random_state=0)
+    kmeans.fit(x)
+    wcss.append(kmeans.inertia_)
+
+plt.plot(range(1,11),wcss)
+plt.title('the elbow method')
+plt.xlabel('Number of Clusters')
+plt.ylabel('Wcss')
 plt.show()
-
-
+# From elbow graph, 4 seems to be ideal clusters
+# Calculate Silhouette score
+nclusters = 3
+km = KMeans(n_clusters=nclusters)
+km.fit(x)
+y_cluster_kmeans = km.predict(x)
+score = metrics.silhouette_score(x, y_cluster_kmeans)
+print("Silhouette Score: ")
+print(score)
+# Silhouette Score: 
+# 0.720652728235737
+from sklearn.datasets.samples_generator import make_blobs
+x,y_cluster_kmeans = make_blobs(n_samples=300, centers=3,cluster_std=0.60, random_state=0)
+plt.scatter(x[:,0],x[:,1],c=y_cluster_kmeans,s=50,cmap='viridis')
+plt.show()                       
 
 
 # 8)	Create Multiple Regression by choosing a dataset of your choice
@@ -82,6 +99,8 @@ model = lr.fit(X_train, y_train)
 predictions = model.predict(X_test)
 print ("R^2 is: \n", r2_score(y_test, predictions))
 print ('RMSE is: \n', mean_squared_error(y_test, predictions))
+# R^2 is: 0.9473926938136903
+# RMSE is: 0.00844039597079636
 ##visualize
 actual_values = y_test
 plt.scatter(predictions, actual_values, alpha=.75, color='b')
