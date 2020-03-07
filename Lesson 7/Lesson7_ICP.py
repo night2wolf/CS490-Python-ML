@@ -11,6 +11,7 @@ from nltk.stem import LancasterStemmer
 pstemmer = PorterStemmer()
 sbstemmer = SnowballStemmer('english')
 lstemmer = LancasterStemmer()
+# Thank you stack overflow :https://stackoverflow.com/questions/1936466/beautifulsoup-grab-visible-webpage-text
 def tag_visible(element):
     if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
         return False
