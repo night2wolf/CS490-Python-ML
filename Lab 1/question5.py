@@ -11,6 +11,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy import stats
 
+# NOTE: some code and ideas borrowed from previous ICPs completed
+
 # LOAD DATA SET
 
 train_df = pd.read_csv('./titanic.csv')

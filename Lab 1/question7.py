@@ -1,7 +1,11 @@
+# @author Landon Volkmann
+
 import nltk
 from nltk.stem import WordNetLemmatizer
 from collections import Counter
 from typing import Tuple
+
+# NOTE: some code and ideas borrowed from previous ICPs completed
 
 file_path = "nlp_input.txt"
 with open(file_path) as fh:
