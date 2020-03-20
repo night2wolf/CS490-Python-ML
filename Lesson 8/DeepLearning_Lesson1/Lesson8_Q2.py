@@ -13,11 +13,6 @@ dataset = pd.read_csv("Breas cancer.csv")
 dataset["diagnosis"] = dataset["diagnosis"].replace('M',1)
 dataset["diagnosis"] = dataset["diagnosis"].replace('B',0)
 dataset = dataset.values
-# Normalize data
-
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-sc.fit(dataset)
 
 # "id","diagnosis","radius_mean","texture_mean","perimeter_mean","area_mean","smoothness_mean","compactness_mean","concavity_mean","concave points_mean","symmetry_mean","fractal_dimension_mean","radius_se","texture_se","perimeter_se","area_se","smoothness_se","compactness_se","concavity_se","concave points_se","symmetry_se","fractal_dimension_se","radius_worst","texture_worst","perimeter_worst","area_worst","smoothness_worst","compactness_worst","concavity_worst","concave points_worst","symmetry_worst","fractal_dimension_worst",
 X_train, X_test, Y_train, Y_test = train_test_split(dataset[:,2:31], dataset[:,1],
@@ -34,6 +29,6 @@ my_first_nn_fitted = my_first_nn.fit(X_train, Y_train, epochs=100,
                                      initial_epoch=0)
 my_first_nn.summary()
 loss, accuracy = my_first_nn.evaluate(X_test, Y_test)
-print("LOSS: {}".format(loss))
-print("ACCURACY: {}".format(accuracy))
-
+print("LOSS No Normalize: {}".format(loss))
+print("ACCURACY No Normalize: {}".format(accuracy))
+# Loss ~ .393 , Accuracy ~ .853

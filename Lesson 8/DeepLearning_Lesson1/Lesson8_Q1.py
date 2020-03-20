@@ -28,4 +28,6 @@ my_first_nn.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'
 my_first_nn_fitted = my_first_nn.fit(X_train, Y_train, epochs=100,
                                      initial_epoch=0)
 print(my_first_nn.summary())
-print(my_first_nn.evaluate(X_test, Y_test))
+loss,accuracy = my_first_nn.evaluate(X_test, Y_test)
+print("Loss with 6 HL: "+ str(loss))
+print("Accuracy with 6 HL: "+ str(accuracy))
