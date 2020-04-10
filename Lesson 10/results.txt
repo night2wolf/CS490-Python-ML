@@ -1,0 +1,73 @@
+PS C:\Users\tklinkenberg\Desktop\Development\CS490\CS490-Python-ML\Lesson 10> & C:/ProgramData/Anaconda3/python.exe 
+"c:/Users/tklinkenberg/Desktop/Development/CS490/CS490-Python-ML/Lesson 10/sentiment_analysis.py"
+Using TensorFlow backend.
+   Unnamed: 0  type                                             review label         file
+0           0  test  Once again Mr. Costner has dragged out a movie...   neg      0_2.txt
+1           1  test  This is an example of why the majority of acti...   neg  10000_4.txt
+2           2  test  First of all I hate those moronic rappers, who...   neg  10001_1.txt
+3           3  test  Not even the Beatles could write songs everyon...   neg  10002_3.txt
+4           4  test  Brass pictures (movies is not a fitting word f...   neg  10003_3.txt
+2000
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:74: The name 
+tf.get_default_graph is deprecated. Please use tf.compat.v1.get_default_graph instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:517: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:4138: The name tf.random_uniform is deprecated. Please use tf.random.uniform instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\optimizers.py:790: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:3341: The name tf.log is deprecated. Please use tf.math.log instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\tensorflow_core\python\ops\math_grad.py:1424: where (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:986: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:973: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:2741: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+Train on 75000 samples, validate on 25000 samples
+Epoch 1/5
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:174: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:181: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+2020-04-10 13:53:39.162777: I tensorflow/core/platform/cpu_feature_guard.cc:145] This TensorFlow binary is optimized with Intel(R) MKL-DNN to use the following CPU instructions in performance critical operations:  AVX AVX2
+To enable them in non-MKL-DNN operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-04-10 13:53:39.180269: I tensorflow/core/common_runtime/process_util.cc:115] Creating new thread pool with default inter op setting: 4. Tune using inter_op_parallelism_threads for best performance.
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:190: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:199: The name tf.is_variable_initialized is deprecated. Please use tf.compat.v1.is_variable_initialized instead.
+
+WARNING:tensorflow:From C:\ProgramData\Anaconda3\lib\site-packages\keras\backend\tensorflow_backend.py:206: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
+
+OMP: Info #212: KMP_AFFINITY: decoding x2APIC ids.
+OMP: Info #210: KMP_AFFINITY: Affinity capable, using global cpuid leaf 11 info
+OMP: Info #154: KMP_AFFINITY: Initial OS proc set respected: 0-3
+OMP: Info #156: KMP_AFFINITY: 4 available OS procs
+OMP: Info #157: KMP_AFFINITY: Uniform topology
+OMP: Info #179: KMP_AFFINITY: 1 packages x 2 cores/pkg x 2 threads/core (2 total cores)
+OMP: Info #214: KMP_AFFINITY: OS proc to physical thread map:
+OMP: Info #171: KMP_AFFINITY: OS proc 0 maps to package 0 core 0 thread 0 
+OMP: Info #171: KMP_AFFINITY: OS proc 1 maps to package 0 core 0 thread 1 
+OMP: Info #171: KMP_AFFINITY: OS proc 2 maps to package 0 core 1 thread 0 
+OMP: Info #171: KMP_AFFINITY: OS proc 3 maps to package 0 core 1 thread 1 
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 8820 thread 0 bound to OS proc set 0
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 16084 thread 1 bound to OS proc set 2
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 11708 thread 2 bound to OS proc set 1
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 15424 thread 3 bound to OS proc set 3
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 19148 thread 4 bound to OS proc set 0
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 15072 thread 5 bound to OS proc set 2
+  256/75000 [..............................] - ETA: 1:32:51 - loss: 1.0954 - acc: 0.4219OMP: Info #250: KMP_AFFINITY: pid 9476 tid 11540 thread 6 bound to OS proc set 1
+OMP: Info #250: KMP_AFFINITY: pid 9476 tid 11348 thread 7 bound to OS proc set 3
+75000/75000 [==============================] - 1286s 17ms/step - loss: 8.0450 - acc: 0.4991 - val_loss: 8.0171 - val_acc: 0.5026
+Epoch 2/5
+75000/75000 [==============================] - 1251s 17ms/step - loss: 8.0730 - acc: 0.4991 - val_loss: 8.0171 - val_acc: 0.5026
+Epoch 3/5
+75000/75000 [==============================] - 1312s 17ms/step - loss: 8.0730 - acc: 0.4991 - val_loss: 8.0171 - val_acc: 0.5026
+Epoch 4/5
+75000/75000 [==============================] - 1409s 19ms/step - loss: 8.0730 - acc: 0.4991 - val_loss: 8.0171 - val_acc: 0.5026
+Epoch 5/5
+75000/75000 [==============================] - 1316s 18ms/step - loss: 8.0730 - acc: 0.4991 - val_loss: 8.0171 - val_acc: 0.5026
