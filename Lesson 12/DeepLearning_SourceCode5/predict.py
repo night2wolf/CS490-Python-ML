@@ -9,11 +9,14 @@ from keras.utils.np_utils import to_categorical
 import re
 from keras.models import load_model
 text = "A lot of good things are happening. We are respected again throughout the world, and that's a great thing"
-tk = Tokenizer()
-tk.fit_on_texts(text)
-index_list = tk.texts_to_sequences(text)
-x_train = pad_sequences(index_list, maxlen=28)
+tokenizer = Tokenizer()
+tokenizer.fit_on_texts(text)
+X = tokenizer.texts_to_sequences(text)
+# 28 for sentiment
+#152 for spam
+X = pad_sequences(X,maxlen=152)
+X = X[[0],:]
 # load model
-model = load_model('model.h5')
-result = model.predict(x_train)
+model = load_model('model_spam.h5')
+result = model.predict(X)
 print(result)
